@@ -1,0 +1,937 @@
+{
+  "name": "1-Month CS Skill-Building Plan",
+  "description": "Fundamentals revision -> LeetCode habit -> Personal project build. Day 1 of the plan lands on whatever start date you pick at import time.",
+  "days": [
+    {
+      "offset": 0,
+      "tasks": [
+        {
+          "title": "Day 1: Arrays, Strings, Big-O",
+          "category": "Fundamentals",
+          "priority": "high",
+          "checklist": [
+            "Review time/space complexity rules",
+            "Solve 3-4 easy array/string problems",
+            "Be able to explain O(n) vs O(n^2) out loud"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 1,
+      "tasks": [
+        {
+          "title": "Day 2: Linked Lists, Stacks, Queues",
+          "category": "Fundamentals",
+          "priority": "high",
+          "checklist": [
+            "Implement a singly linked list from scratch",
+            "Build a stack and queue using it",
+            "Solve 2-3 easy problems on each"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 2,
+      "tasks": [
+        {
+          "title": "Day 3: Recursion + Trees",
+          "category": "Fundamentals",
+          "priority": "high",
+          "checklist": [
+            "Practice recursion (factorial, fibonacci)",
+            "Learn tree traversals (inorder/preorder/postorder)",
+            "Do NOT rush this day"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 3,
+      "tasks": [
+        {
+          "title": "Day 4: Hashing + Graphs (intro)",
+          "category": "Fundamentals",
+          "priority": "high",
+          "checklist": [
+            "Review hashmap/set internals (collisions, O(1) avg lookup)",
+            "Solve a few hashmap problems",
+            "Intro to BFS/DFS on a grid"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 4,
+      "tasks": [
+        {
+          "title": "Day 5: Mixed Review + Mock",
+          "category": "Fundamentals",
+          "priority": "high",
+          "checklist": [
+            "5 random easy/medium problems across all topics",
+            "20 min each, no looking things up",
+            "Note gaps to revisit"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 5,
+      "tasks": [
+        {
+          "title": "Day 6: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Neetcode roadmap order, start of Blind 75. 20-30 min limit per problem before checking solution.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 6: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Set up repo, choose stack, build data model, implement core CRUD (add/view/delete entries).",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 6: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 6: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 6,
+      "tasks": [
+        {
+          "title": "Day 7: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Neetcode roadmap order, start of Blind 75. 20-30 min limit per problem before checking solution.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 7: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Set up repo, choose stack, build data model, implement core CRUD (add/view/delete entries).",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 7: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 7: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 7,
+      "tasks": [
+        {
+          "title": "Day 8: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Neetcode roadmap order, start of Blind 75. 20-30 min limit per problem before checking solution.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 8: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Set up repo, choose stack, build data model, implement core CRUD (add/view/delete entries).",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 8: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 8: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 8,
+      "tasks": [
+        {
+          "title": "Day 9: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Neetcode roadmap order, start of Blind 75. 20-30 min limit per problem before checking solution.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 9: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Set up repo, choose stack, build data model, implement core CRUD (add/view/delete entries).",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 9: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 9: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 9,
+      "tasks": [
+        {
+          "title": "Day 10: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Neetcode roadmap order, start of Blind 75. 20-30 min limit per problem before checking solution.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 10: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Set up repo, choose stack, build data model, implement core CRUD (add/view/delete entries).",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 10: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 10: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 10,
+      "tasks": [
+        {
+          "title": "Day 11: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Neetcode roadmap order, start of Blind 75. 20-30 min limit per problem before checking solution.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 11: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Set up repo, choose stack, build data model, implement core CRUD (add/view/delete entries).",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 11: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 11: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 11,
+      "tasks": [
+        {
+          "title": "Day 12: Rest day",
+          "category": "Rest",
+          "priority": null,
+          "checklist": [
+            "No LeetCode or project work today",
+            "1 full rest day per week, minimum"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 12,
+      "tasks": [
+        {
+          "title": "Day 13: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Continue Blind 75, focus on two pointers / sliding window / binary search patterns.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 13: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Build basic UI, connect frontend to backend, get full add/view/delete flow working end to end.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 13: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 13: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 13,
+      "tasks": [
+        {
+          "title": "Day 14: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Continue Blind 75, focus on two pointers / sliding window / binary search patterns.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 14: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Build basic UI, connect frontend to backend, get full add/view/delete flow working end to end.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 14: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 14: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 14,
+      "tasks": [
+        {
+          "title": "Day 15: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Continue Blind 75, focus on two pointers / sliding window / binary search patterns.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 15: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Build basic UI, connect frontend to backend, get full add/view/delete flow working end to end.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 15: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 15: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 15,
+      "tasks": [
+        {
+          "title": "Day 16: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Continue Blind 75, focus on two pointers / sliding window / binary search patterns.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 16: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Build basic UI, connect frontend to backend, get full add/view/delete flow working end to end.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 16: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 16: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 16,
+      "tasks": [
+        {
+          "title": "Day 17: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Continue Blind 75, focus on two pointers / sliding window / binary search patterns.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 17: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Build basic UI, connect frontend to backend, get full add/view/delete flow working end to end.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 17: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 17: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 17,
+      "tasks": [
+        {
+          "title": "Day 18: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Continue Blind 75, focus on two pointers / sliding window / binary search patterns.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 18: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Build basic UI, connect frontend to backend, get full add/view/delete flow working end to end.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 18: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 18: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 18,
+      "tasks": [
+        {
+          "title": "Day 19: Rest day",
+          "category": "Rest",
+          "priority": null,
+          "checklist": [
+            "No LeetCode or project work today",
+            "1 full rest day per week, minimum"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 19,
+      "tasks": [
+        {
+          "title": "Day 20: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "BFS/DFS, dynamic programming basics.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 20: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Add one strong feature: charts/data viz, simple prediction/insight feature, or auth.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 20: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 20: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 20,
+      "tasks": [
+        {
+          "title": "Day 21: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "BFS/DFS, dynamic programming basics.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 21: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Add one strong feature: charts/data viz, simple prediction/insight feature, or auth.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 21: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 21: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 21,
+      "tasks": [
+        {
+          "title": "Day 22: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "BFS/DFS, dynamic programming basics.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 22: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Add one strong feature: charts/data viz, simple prediction/insight feature, or auth.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 22: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 22: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 22,
+      "tasks": [
+        {
+          "title": "Day 23: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "BFS/DFS, dynamic programming basics.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 23: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Add one strong feature: charts/data viz, simple prediction/insight feature, or auth.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 23: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 23: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 23,
+      "tasks": [
+        {
+          "title": "Day 24: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "BFS/DFS, dynamic programming basics.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 24: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Add one strong feature: charts/data viz, simple prediction/insight feature, or auth.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 24: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 24: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 24,
+      "tasks": [
+        {
+          "title": "Day 25: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "BFS/DFS, dynamic programming basics.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 25: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Add one strong feature: charts/data viz, simple prediction/insight feature, or auth.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 25: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 25: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 25,
+      "tasks": [
+        {
+          "title": "Day 26: Rest day",
+          "category": "Rest",
+          "priority": null,
+          "checklist": [
+            "No LeetCode or project work today",
+            "1 full rest day per week, minimum"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 26,
+      "tasks": [
+        {
+          "title": "Day 27: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Mixed review of all patterns covered so far, redo any problems that gave trouble.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 27: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Clean up code, write a proper README, deploy (Render/Railway/Vercel), push final version to GitHub.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 27: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 27: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 27,
+      "tasks": [
+        {
+          "title": "Day 28: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Mixed review of all patterns covered so far, redo any problems that gave trouble.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 28: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Clean up code, write a proper README, deploy (Render/Railway/Vercel), push final version to GitHub.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 28: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 28: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 28,
+      "tasks": [
+        {
+          "title": "Day 29: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Mixed review of all patterns covered so far, redo any problems that gave trouble.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 29: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Clean up code, write a proper README, deploy (Render/Railway/Vercel), push final version to GitHub.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 29: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 29: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    },
+    {
+      "offset": 29,
+      "tasks": [
+        {
+          "title": "Day 30: LeetCode session",
+          "category": "LeetCode",
+          "priority": "medium",
+          "checklist": [
+            "Mixed review of all patterns covered so far, redo any problems that gave trouble.",
+            "Problems solved: ___"
+          ]
+        },
+        {
+          "title": "Day 30: Project session",
+          "category": "Project",
+          "priority": "medium",
+          "checklist": [
+            "Clean up code, write a proper README, deploy (Render/Railway/Vercel), push final version to GitHub.",
+            "Task worked on: ___________________"
+          ]
+        },
+        {
+          "title": "Day 30: German practice",
+          "category": "German",
+          "priority": null,
+          "checklist": []
+        },
+        {
+          "title": "Day 30: Review stuck concept",
+          "category": "Review",
+          "priority": null,
+          "checklist": [
+            "Reviewed / noted any concept I got stuck on"
+          ]
+        }
+      ]
+    }
+  ]
+}
