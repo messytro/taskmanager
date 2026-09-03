@@ -14,6 +14,26 @@ body.dark {
 }
 #app { display: flex; justify-content: center; padding: 24px 12px; }
 
+/* soft press-bounce feedback on all interactive elements */
+button, .cat-chip, .dur-chip, .pri-chip, .rep-chip, .rem-chip, .filter-chip, .swatch,
+.week-day, .mini-cal-day, .fab, .icon-btn, .nav-btn, .today-pill, .check-circle,
+.all-day-chip, .cal-event-bar, .tab-btn, .save-btn, .del-btn, .mini-btn, .cal-cell {
+  transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+button:active, .cat-chip:active, .dur-chip:active, .pri-chip:active, .rep-chip:active,
+.rem-chip:active, .filter-chip:active, .swatch:active, .week-day:active, .mini-cal-day:active,
+.icon-btn:active, .nav-btn:active, .today-pill:active, .check-circle:active,
+.all-day-chip:active, .cal-event-bar:active, .tab-btn:active, .save-btn:active,
+.del-btn:active, .mini-btn:active {
+  transform: scale(0.94);
+}
+.fab:active { transform: scale(0.90); }
+.task-row:active { transform: scale(0.98); }
+.block:active { transform: scale(0.98); }
+.block { transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
 .app-shell { display: flex; gap: 20px; width: 100%; max-width: 900px; justify-content: center; align-items: flex-start; }
 .sidebar { display: none; }
 .rail { display: none; }
@@ -85,8 +105,15 @@ body.dark {
 .progress-label { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--ink-soft); white-space: nowrap; }
 
 .all-day-row { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 20px 0; }
-.all-day-chip { display: flex; align-items: center; gap: 6px; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+.all-day-chip { display: flex; align-items: center; gap: 6px; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 5px 10px; font-size: 12px; cursor: grab; touch-action: none; }
 .all-day-chip.done { opacity: 0.5; text-decoration: line-through; }
+.chip-ghost {
+  position: fixed; top: 0; left: 0; transform: translate(-50%, -130%);
+  background: var(--ink); color: var(--card); font-size: 12px; padding: 6px 12px;
+  border-radius: 20px; pointer-events: none; z-index: 50; opacity: 0.9;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25); white-space: nowrap;
+}
+.chip-ghost.chip-ghost-valid { background: var(--accent); }
 
 .scroll-area { height: 500px; overflow-y: auto; position: relative; }
 .grid { position: relative; padding-left: 56px; padding-right: 14px; cursor: pointer; margin-top: 10px; }

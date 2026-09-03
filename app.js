@@ -126,6 +126,7 @@ const state = {
 let sheetDraft = null; // set when sheet opens
 let timelineDrag = null; // {taskId, mode, startY, originStart, originDuration, el, moved}
 let swipeDrag = null; // {taskId, el, wrapEl, startX, startY, dx, dragging}
+let chipDrag = null; // {taskId, ghostEl, dragging}
 let suppressNextClick = false;
 
 /* ---------- category / task helpers ---------- */
@@ -691,7 +692,7 @@ function timelineHTML() {
   const allDayRow = allDayTasks.length
     ? `<div class="all-day-row">${allDayTasks.map((t) => {
         const cat = catById(t.categoryId);
-        return `<div class="all-day-chip ${t.done ? "done" : ""}" data-action="open-edit-sheet" data-id="${t.id}"><span class="chip-dot" style="background:${cat.color}"></span>${escapeHtml(t.title)}</div>`;
+        return `<div class="all-day-chip ${t.done ? "done" : ""}" data-action="open-edit-sheet" data-id="${t.id}" data-chip-drag-id="${t.id}"><span class="chip-dot" style="background:${cat.color}"></span>${escapeHtml(t.title)}</div>`;
       }).join("")}</div>`
     : "";
 
@@ -1141,6 +1142,19 @@ function attachPostRenderListeners() {
     });
   });
 
+  // drag an all-day chip down into the timeline to give it a time
+  document.querySelectorAll(".all-day-chip[data-chip-drag-id]").forEach((chip) => {
+    chip.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      const ghost = document.createElement("div");
+      ghost.className = "chip-ghost";
+      ghost.textContent = chip.textContent;
+      document.body.appendChild(ghost);
+      chipDrag = { taskId: chip.dataset.chipDragId, ghostEl: ghost, dragging: false };
+      moveGhost(e.clientX, e.clientY);
+    });
+  });
+
   // drag an event to a different day in Calendar view
   document.querySelectorAll(".cal-event-bar[data-drag-task-id]").forEach((bar) => {
     bar.addEventListener("dragstart", (e) => {
@@ -1183,6 +1197,12 @@ function beginTimelineDrag(e, el, taskId, mode) {
   el.classList.add("dragging");
 }
 
+function moveGhost(x, y) {
+  if (!chipDrag) return;
+  chipDrag.ghostEl.style.left = x + "px";
+  chipDrag.ghostEl.style.top = y + "px";
+}
+
 function bindGlobalPointerHandlers() {
   window.addEventListener("pointermove", (e) => {
     if (timelineDrag) {
@@ -1213,10 +1233,22 @@ function bindGlobalPointerHandlers() {
         swipeDrag.dx = dx;
         swipeDrag.el.style.transform = `translateX(${dx}px)`;
       }
+      return;
+    }
+    if (chipDrag) {
+      chipDrag.dragging = true;
+      moveGhost(e.clientX, e.clientY);
+      const grid = document.getElementById("grid");
+      if (grid) {
+        const rect = grid.getBoundingClientRect();
+        const over = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        chipDrag.overGrid = over;
+        chipDrag.ghostEl.classList.toggle("chip-ghost-valid", over);
+      }
     }
   });
 
-  window.addEventListener("pointerup", () => {
+  window.addEventListener("pointerup", (e) => {
     if (timelineDrag) {
       const d = timelineDrag;
       timelineDrag = null;
@@ -1249,6 +1281,32 @@ function bindGlobalPointerHandlers() {
           d.el.style.transform = "translateX(0)";
         }
       }
+      return;
+    }
+    if (chipDrag) {
+      const d = chipDrag;
+      chipDrag = null;
+      d.ghostEl.remove();
+      const grid = document.getElementById("grid");
+      if (d.dragging && d.overGrid && grid) {
+        suppressNextClick = true;
+        const rect = grid.getBoundingClientRect();
+        const y = e.clientY - rect.top;
+        let mins = GRID_START + (y / HOUR_H) * 60;
+        mins = Math.round(mins / SNAP) * SNAP;
+        mins = clamp(mins, GRID_START, GRID_END - SNAP);
+        const t = state.tasks.find((x) => x.id === d.taskId);
+        if (t) {
+          t.start = mins;
+          t.duration = t.duration || 30;
+          t.updatedAt = nowIso();
+          t.dirty = true;
+          persist(); trySync(); scheduleReminders();
+        }
+      } else if (d.dragging) {
+        suppressNextClick = true;
+      }
+      render();
     }
   });
 }
