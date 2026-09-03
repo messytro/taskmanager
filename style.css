@@ -56,10 +56,16 @@ body.dark {
 
 .phone { width: 100%; max-width: 430px; background: var(--card); border-radius: 28px; border: 1px solid var(--rule); overflow: hidden; position: relative; }
 
-.tab-bar { display: flex; align-items: center; gap: 4px; padding: 14px 14px 0; }
-.tab-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--ink-soft); font-size: 12px; padding: 7px 10px; border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif; }
+.tab-bar { display: flex; align-items: center; gap: 4px; padding: 14px 14px 0; overflow-x: auto; }
+.tab-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--ink-soft); font-size: 12px; padding: 7px 10px; border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif; white-space: nowrap; flex-shrink: 0; }
 .tab-btn.active { background: var(--paper); color: var(--ink); font-weight: 600; }
-.tab-spacer { flex: 1; }
+.tab-spacer { flex: 1; min-width: 4px; }
+.icon-btn { flex-shrink: 0; }
+@media (max-width: 400px) {
+  .tab-bar { gap: 2px; padding: 12px 8px 0; }
+  .tab-btn { padding: 6px 7px; }
+  .tab-label { display: none; }
+}
 .icon-btn, .nav-btn { background: none; border: none; color: var(--ink-soft); cursor: pointer; padding: 6px; border-radius: 8px; display: flex; }
 .icon-btn:hover, .nav-btn:hover { background: var(--paper); color: var(--ink); }
 
@@ -201,7 +207,7 @@ body.dark {
 .cat-time-fill { height: 100%; border-radius: 4px; }
 .cat-time-mins { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--ink-soft); width: 42px; text-align: right; }
 
-.sync-note { font-size: 10px; color: var(--ink-soft); text-align: center; padding: 6px 0 0; }
+.sync-note { font-size: 10px; color: var(--ink-soft); text-align: center; padding: 6px 0 0; cursor: pointer; }
 
 .toast-stack { position: absolute; top: 14px; left: 14px; right: 14px; z-index: 20; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
 .toast { background: var(--ink); color: var(--card); padding: 10px 14px; border-radius: 12px; font-size: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; pointer-events: auto; }

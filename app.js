@@ -255,17 +255,23 @@ async function processPendingDeletes(uid) {
   state.pendingDeletes.tasks = stillPendingTasks;
 }
 
+let lastSyncError = null;
+
 async function pushDirty(uid) {
+  let failCount = 0;
   const dirtyCats = state.categories.filter((c) => c.dirty);
   for (const c of dirtyCats) {
     const { error } = await supabase.from("categories").upsert(catToRemote(c, uid));
     if (!error) c.dirty = false;
+    else { failCount++; lastSyncError = error.message || String(error); console.warn("category push failed:", error); }
   }
   const dirtyTasks = state.tasks.filter((t) => t.dirty);
   for (const t of dirtyTasks) {
     const { error } = await supabase.from("tasks").upsert(taskToRemote(t, uid));
     if (!error) t.dirty = false;
+    else { failCount++; lastSyncError = error.message || String(error); console.warn("task push failed:", error); }
   }
+  return failCount;
 }
 
 async function pullRemote(uid) {
@@ -273,7 +279,11 @@ async function pullRemote(uid) {
     supabase.from("categories").select("*").eq("user_id", uid),
     supabase.from("tasks").select("*").eq("user_id", uid),
   ]);
-  if (ce || te) { console.warn(ce || te); return; }
+  if (ce || te) {
+    lastSyncError = (ce && ce.message) || (te && te.message) || "pull failed";
+    console.warn("pull failed:", ce || te);
+    return false;
+  }
 
   const remoteCatIds = new Set((cats || []).map((r) => r.id));
   (cats || []).forEach((r) => {
@@ -292,6 +302,7 @@ async function pullRemote(uid) {
     else if (!local.dirty && new Date(remoteObj.updatedAt) > new Date(local.updatedAt)) Object.assign(local, remoteObj);
   });
   state.tasks = state.tasks.filter((t) => t.dirty || remoteTaskIds.has(t.id));
+  return true;
 }
 
 let syncing = false;
@@ -301,14 +312,21 @@ async function trySync() {
   state.syncStatus = "syncing";
   render();
   const uid = state.session.user.id;
+  lastSyncError = null;
   try {
     await processPendingDeletes(uid);
-    await pushDirty(uid);
-    await pullRemote(uid);
-    state.syncStatus = "idle";
+    const failCount = await pushDirty(uid);
+    const pullOk = await pullRemote(uid);
+    if (failCount > 0 || !pullOk) {
+      state.syncStatus = "error";
+      pushToast(`Sync had a problem: ${lastSyncError || "unknown error"}`);
+    } else {
+      state.syncStatus = "idle";
+    }
   } catch (e) {
     console.warn("sync error", e);
     state.syncStatus = "error";
+    pushToast(`Sync failed: ${e.message || e}`);
   } finally {
     saveLocal();
     syncing = false;
@@ -588,7 +606,7 @@ function sidebarHTML() {
 
   const authBox = state.session
     ? `<div class="auth-box"><div class="who">Signed in as<br>${escapeHtml(state.session.user.email)}</div><button class="auth-btn" data-action="sign-out">Sign out</button>
-       <div class="sync-note">${state.syncStatus === "syncing" ? "Syncing…" : state.syncStatus === "error" ? "Sync error — will retry" : "Synced"}</div></div>`
+       <div class="sync-note" data-action="retry-sync" title="${escapeHtml(lastSyncError || "")}">${state.syncStatus === "syncing" ? "Syncing…" : state.syncStatus === "error" ? "⚠️ Sync error — tap to retry" : "✓ Synced"}</div></div>`
     : `<div class="auth-box"><div class="who">Not signed in — data stays on this device only.</div><button class="auth-btn" data-action="open-auth">Sign in to sync</button></div>`;
 
   return `
@@ -616,7 +634,10 @@ function sidebarHTML() {
 }
 
 function tabBarHTML() {
-  const tab = (v, icon, label) => `<button class="tab-btn ${state.view === v ? "active" : ""}" data-action="set-view" data-view="${v}">${icon} ${label}</button>`;
+  const tab = (v, icon, label) => `<button class="tab-btn ${state.view === v ? "active" : ""}" data-action="set-view" data-view="${v}"><span class="tab-icon">${icon}</span><span class="tab-label">${label}</span></button>`;
+  const accountBtn = state.session
+    ? `<button class="icon-btn" data-action="sign-out" aria-label="Signed in — tap to sign out" title="${escapeHtml(state.session.user.email)} — tap to sign out">👤✓</button>`
+    : `<button class="icon-btn" data-action="open-auth" aria-label="Sign in to sync">👤</button>`;
   return `
     <div class="tab-bar">
       ${tab("timeline", "🕐", "Timeline")}
@@ -624,6 +645,7 @@ function tabBarHTML() {
       ${tab("tasks", "☑︎", "Tasks")}
       ${tab("stats", "📊", "Stats")}
       <div class="tab-spacer"></div>
+      ${accountBtn}
       <button class="icon-btn" data-action="toggle-dark" aria-label="Toggle dark mode">${state.darkMode ? "☀️" : "🌙"}</button>
     </div>
   `;
@@ -1287,6 +1309,7 @@ document.addEventListener("click", (e) => {
     case "do-sign-in": doSignIn(); break;
     case "do-sign-up": doSignUp(); break;
     case "sign-out": doSignOut(); break;
+    case "retry-sync": trySync(); break;
     case "dismiss-toast": dismissToast(el.dataset.id); break;
     case "open-import": state.importOpen = true; state.importMessage = ""; render(); break;
     case "close-import": state.importOpen = false; render(); break;
