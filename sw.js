@@ -1,50 +1,51 @@
-// Service worker: caches the app shell on first visit so it keeps working
-// without a network connection afterward. Cloud sync now talks directly to
-// Supabase (a different origin), so it's never intercepted by this cache
-// logic anyway — offline it'll just fail naturally and the app falls back
-// to local-only storage, same as if sync were never configured.
+const CACHE = "planner-cache-v7";
+const SHELL = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./app.js",
+  "./config.js",
+  "./manifest.json",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./plans/cs-skill-builder.json",
+];
 
-const CACHE_NAME = 'b2quest-cache-v4';
-const APP_SHELL = ['./', './index.html', './manifest.json', './config.js', './icon-192.png', './icon-512.png'];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .catch(() => {}) // don't fail install if e.g. icons 404 during dev
+self.addEventListener("install", (e) => {
+  e.waitUntil(
+    caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    )
+      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
+// Cache-first for our own files, network-first (with cache fallback) for everything else
+// (e.g. the Supabase CDN script and API calls need the network when available).
+self.addEventListener("fetch", (e) => {
+  const url = new URL(e.request.url);
+  const isOwnFile = url.origin === self.location.origin;
 
-  // For the page itself: try the network first (so you get updates when
-  // online), fall back to the cached copy when offline.
-  if (event.request.mode === 'navigate' || event.request.destination === 'document') {
-    event.respondWith(
-      fetch(event.request)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return res;
-        })
-        .catch(() => caches.match('./index.html'))
+  if (isOwnFile) {
+    e.respondWith(
+      caches.match(e.request).then((cached) => {
+        const fetchPromise = fetch(e.request)
+          .then((res) => {
+            caches.open(CACHE).then((cache) => cache.put(e.request, res.clone()));
+            return res;
+          })
+          .catch(() => cached);
+        return cached || fetchPromise;
+      })
     );
-    return;
+  } else {
+    e.respondWith(
+      fetch(e.request).catch(() => caches.match(e.request))
+    );
   }
-
-  // Everything else (icons, manifest, config): cache-first, network fallback.
-  event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
-  );
 });
